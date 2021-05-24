@@ -4,7 +4,6 @@ const util = require("util");
 const cTable = require("console.table");
 const logo = require("asciiart-logo");
 const chalk = require("chalk");
-const { async } = require("rxjs");
 
 function displayLogo() {
     console.log(
