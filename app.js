@@ -143,3 +143,10 @@ var addEmployee = async () => {
         value: empManager.id,
       };
     });
+
+    if (managerArr.length === 0) {
+        managerArr = [{ name: "None", value: null }];
+      }
+
+      let noManager = managerArr;
+      noManager.push({ name: "None", value: null });
