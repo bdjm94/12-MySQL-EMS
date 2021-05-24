@@ -264,3 +264,13 @@ var addDepartment = async () => {
         validate: validInput,
       },
     ]);  
+
+    var allDepartments = await connection.query("SELECT * FROM department");
+    var departmentCheck = allDepartments.some(
+      (each) => each.department_name === response.department
+    );
+    if (departmentCheck) {
+      console.log(chalk.red("Error! Department already exists! Please try again."));
+      startPrompt();
+      return;
+    }
