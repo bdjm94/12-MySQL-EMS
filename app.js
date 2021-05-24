@@ -128,8 +128,8 @@ const validNum = (input) => {
 
 var addEmployee = async () => {
   try {
-    var empRow = await connection.query("SELECT * FROM role");
-    var choicesArr = empRow.map((employeeRole) => {
+    var employeeRow = await connection.query("SELECT * FROM role");
+    var employee_role = employeeRow.map((employeeRole) => {
       return {
         name: employeeRole.title,
         value: employeeRole.id,
@@ -137,18 +137,18 @@ var addEmployee = async () => {
     });
 
     var managerInfo = await connection.query("SELECT * FROM employees");
-    var managerArr = managerInfo.map((empManager) => {
+    var employee_manager = managerInfo.map((empManager) => {
       return {
         name: empManager.first_name + " " + empManager.last_name,
         value: empManager.id,
       };
     });
 
-    if (managerArr.length === 0) {
-        managerArr = [{ name: "None", value: null }];
+    if (employee_manager.length === 0) {
+        employee_manager = [{ name: "None", value: null }];
       }
 
-    let noManager = managerArr;
+    let noManager = employee_manager;
       noManager.push({ name: "None", value: null });
 
     var response = await inquirer.prompt([
@@ -167,13 +167,13 @@ var addEmployee = async () => {
         {
           name: "role_id",
           type: "list",
-          choices: choicesArr,
+          choices: employee_role,
           message: "What is the Employee's Role?",
         },
         {
           name: "manager_id",
           type: "list",
-          choices: managerArr,
+          choices: employee_manager,
           message: "Who is the Employee's Manager?",
         },
       ]);
@@ -189,7 +189,7 @@ var addEmployee = async () => {
       console.table(
         "-------------------------------------------------------------------",
         ` Success! This employee has been added to your database: ${
-          answer.first_name + " " + answer.last_name
+          response.first_name + " " + response.last_name
         }`,
         "-------------------------------------------------------------------",
       );
@@ -199,3 +199,33 @@ var addEmployee = async () => {
       startPrompt();
     }
   };
+
+var addRole = async () => {
+  try {
+    var departmentRow = await connection.query("SELECT * FROM department");
+    var department_id = departmentRow.map((departmentID) => {
+      return {
+        name: departmentID.department_name,
+        value: departmentID.id,
+      };
+    });  
+var response = await inquirer.prompt([
+      {
+        name: "title",
+        type: "input",
+        message: "What is the new Role's title?",
+        validate: validInput,
+      },
+      {
+        name: "salary",
+        type: "input",
+        message: "What is the new Role's Salary?",
+        validate: validNum,
+      },
+      {
+        name: "department",
+        type: "list",
+        choices: department_id,
+        message: "What Department does this Role belong to?",
+      },
+    ]);
