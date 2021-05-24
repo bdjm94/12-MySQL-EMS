@@ -54,8 +54,6 @@ connection.connect((err) => {
                   "View all Roles",
                   "View all Departments",
                   "Update Employee Roles",
-                  "Delete Employee",
-                  "Delete Role",
                   "Exit",
               ],
           });
