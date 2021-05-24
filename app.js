@@ -135,3 +135,11 @@ var addEmployee = async () => {
         value: employeeRole.id,
       };
     });
+
+    var managerInfo = await connection.query("SELECT * FROM employees");
+    var managerArr = managerInfo.map((empManager) => {
+      return {
+        name: empManager.first_name + " " + empManager.last_name,
+        value: empManager.id,
+      };
+    });
