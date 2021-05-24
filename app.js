@@ -399,3 +399,12 @@ if (employee_manager.length === 0) {
 
 let noManager = employee_manager;
     noManager.push({ name: "None", value: null });
+
+var managerResponse = await inquirer.prompt([
+    {
+          name: "manager_id",
+          type: "list",
+          message: "Choose a new Manager",
+          choices: employee_manager,
+    },
+]);    
