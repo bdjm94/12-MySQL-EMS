@@ -61,27 +61,27 @@
 
     ## Images
 
-  | EMS Home Page |
+| EMS Home Page |
 |------------|
   ![Home Page](./assets/home.JPG)
 
-  | Table View |
+| Table View |
 |------------|
   ![Tables](./assets/view_tables.JPG)
 
-  | New Employee |
+| New Employee |
 |------------|
   ![New Employee](./assets/new_employee.JPG)
 
-  | New Role & Department |
+| New Role & Department |
 |------------|
   ![New Role and Department](./assets/new_role_department.JPG)
 
-  | Role Update |
+| Role Update |
 |------------|
   ![Role Update](./assets/role_update.JPG)
 
-  | Exit Message |
+| Exit Message |
 |------------|
   ![Exit](./assets/exit.JPG)
 
