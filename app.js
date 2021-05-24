@@ -37,5 +37,5 @@ connection.connect((err) => {
     }
     console.log(chalk.magenta("Successfully connected to MySQL server!"));
     displayLogo();
-    startProgram();
+    startPrompt();
   });
