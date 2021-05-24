@@ -151,7 +151,7 @@ var addEmployee = async () => {
     let noManager = managerArr;
       noManager.push({ name: "None", value: null });
 
-    var selection = await inquirer.prompt([
+    var response = await inquirer.prompt([
         {
           name: "first_name",
           type: "input",
@@ -177,3 +177,17 @@ var addEmployee = async () => {
           message: "Who is the Employee's Manager?",
         },
       ]);
+      console.table(
+        "--------------------------",
+        "--------------------------",
+        "        Just Added        ",
+        response,
+        "--------------------------"
+      );
+      var result = await connection.query("INSERT INTO employees SET ?", {
+        id: response.id,
+        first_name: response.first_name,
+        last_name: response.last_name,
+        role_id: response.role_id,
+        manager_id: response.manager_id,
+      });
