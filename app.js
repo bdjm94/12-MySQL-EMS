@@ -177,13 +177,8 @@ var addEmployee = async () => {
           message: "Who is the Employee's Manager?",
         },
       ]);
-      console.table(
-        "--------------------------",
-        "--------------------------",
-        "        Just Added        ",
-        response,
-        "--------------------------"
-      );
+      console.log(chalk.magenta("Just Added", response
+      ));
       var result = await connection.query("INSERT INTO employees SET ?", {
         id: response.id,
         first_name: response.first_name,
@@ -191,3 +186,16 @@ var addEmployee = async () => {
         role_id: response.role_id,
         manager_id: response.manager_id,
       });
+      console.table(
+        "-------------------------------------------------------------------",
+        ` Success! This employee has been added to your database: ${
+          answer.first_name + " " + answer.last_name
+        }`,
+        "-------------------------------------------------------------------",
+      );
+      startPrompt();
+    } catch (err) {
+      console.log(err);
+      startPrompt();
+    }
+  };
