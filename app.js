@@ -148,5 +148,32 @@ var addEmployee = async () => {
         managerArr = [{ name: "None", value: null }];
       }
 
-      let noManager = managerArr;
+    let noManager = managerArr;
       noManager.push({ name: "None", value: null });
+
+    var selection = await inquirer.prompt([
+        {
+          name: "first_name",
+          type: "input",
+          message: "What is the Employee's First Name?",
+          validate: validInput,
+        },
+        {
+          name: "last_name",
+          type: "input",
+          message: "What is the Employee's Last Name?",
+          validate: validInput,
+        },
+        {
+          name: "role_id",
+          type: "list",
+          choices: choicesArr,
+          message: "What is the Employee's Role?",
+        },
+        {
+          name: "manager_id",
+          type: "list",
+          choices: managerArr,
+          message: "Who is the Employee's Manager?",
+        },
+      ]);
