@@ -348,3 +348,13 @@ var viewDepartments = async () => {
     startPrompt();
   }
 };
+
+var updateEmployeeRoles = async () => {
+    try {
+      var employeeRow = await connection.query("SELECT * FROM employees");
+      var nameEmployee = employeeRow.map((employeeName) => {
+        return {
+          name: employeeName.first_name + " " + employeeName.last_name,
+          value: employeeName.id,
+        };
+      });
