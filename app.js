@@ -203,7 +203,7 @@ var addEmployee = async () => {
 var addRole = async () => {
   try {
     var departmentRow = await connection.query("SELECT * FROM department");
-    var department_id = departmentRow.map((departmentID) => {
+    var id_department = departmentRow.map((departmentID) => {
       return {
         name: departmentID.department_name,
         value: departmentID.id,
@@ -225,15 +225,31 @@ var response = await inquirer.prompt([
       {
         name: "department",
         type: "list",
-        choices: department_id,
+        choices: id_department,
         message: "What Department does this Role belong to?",
       },
     ]);
 
     var allRoles = await connection.query("SELECT * FROM role");
-    var roleCheck = allRoles.some((each) => each.title === answer.title);
+    var roleCheck = allRoles.some((each) => each.title === response.title);
     if (roleCheck) {
       console.log(chalk.red("Error! Role already exists! Please try again."));
       startPrompt();
       return;
     }
+
+    var result = await connection.query("INSERT INTO role SET ?", {
+        title: response.title,
+        salary: response.salary,
+        department_id: response.department,
+      });
+      console.table(
+        "---------------------------------------------------",
+          ` This role has been added: ${response.title}  `,
+        "---------------------------------------------------");
+      startPrompt();
+    } catch (err) {
+      console.log(err);
+      startPrompt();
+    }
+  };
