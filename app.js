@@ -329,3 +329,22 @@ var viewRoles = async () => {
     startPrompt();
   }
 };
+
+var viewDepartments = async () => {
+  try {
+    var viewTable = await connection.query(
+      "SELECT * FROM department ORDER BY id"
+    );
+    console.table(
+      "=================================================",
+      "               ALL DEPARTMENTS",
+      "=================================================",
+      viewTable,
+      "================================================="
+    );
+    startPrompt();
+  } catch (err) {
+    console.log(err);
+    startPrompt();
+  }
+};
