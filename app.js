@@ -310,3 +310,22 @@ var viewEmployees = async () => {
     startPrompt();
   }
 };
+
+var viewRoles = async () => {
+  try {
+    var viewTable = await connection.query(
+      "SELECT role.id, title, salary, department_name AS department FROM role INNER JOIN department ON role.department_id = department.id"
+    );
+    console.table(
+      "==================================================================",
+      "                          ALL ROLES",
+      "==================================================================",
+      viewTable,
+      "=================================================================="
+    );
+    startPrompt();
+  } catch (err) {
+    console.log(err);
+    startPrompt();
+  }
+};
