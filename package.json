@@ -1,0 +1,28 @@
+{
+  "name": "12-MySQL-EMS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdjm94/12-MySQL-EMS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdjm94/12-MySQL-EMS/issues"
+  },
+  "homepage": "https://github.com/bdjm94/12-MySQL-EMS#readme",
+  "dependencies": {
+    "asciiart-logo": "^0.2.6",
+    "chalk": "^4.1.1",
+    "console.table": "^0.10.0",
+    "inquirer": "^8.1.0",
+    "mysql": "^2.18.1",
+    "util": "^0.12.3"
+  }
+}
