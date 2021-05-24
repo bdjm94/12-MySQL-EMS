@@ -274,3 +274,39 @@ var addDepartment = async () => {
       startPrompt();
       return;
     }
+
+var result = await connection.query("INSERT INTO department SET ?", {
+        id: response.id,
+        department_name: response.department,
+    });
+      console.table(
+        "----------------------------------------------------------------------------------",
+        `  Success! This department has been added to your database: ${response.department}  `,
+        "----------------------------------------------------------------------------------",
+      );
+      startPrompt();
+    } catch (err) {
+      console.log(err);
+      startPrompt();
+    }
+  };
+
+var viewEmployees = async () => {
+  try {
+    var viewTable = await connection.query(
+      "SELECT employees.id, employees.first_name, employees.last_name, role.title, department.department_name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employees LEFT JOIN role on employees.role_id = role.id LEFT JOIN department on role.id = department.id LEFT JOIN employees manager on manager.manager_id = employees.manager_id"
+    );
+
+    console.table(
+      "===========================================================================================================",
+      "                                              ALL EMPLOYEES",
+      "===========================================================================================================",
+      viewTable,
+      "==========================================================================================================="
+    );
+    startPrompt();
+  } catch (err) {
+    console.log(err);
+    startPrompt();
+  }
+};
