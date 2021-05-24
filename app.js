@@ -229,3 +229,11 @@ var response = await inquirer.prompt([
         message: "What Department does this Role belong to?",
       },
     ]);
+
+    var allRoles = await connection.query("SELECT * FROM role");
+    var roleCheck = allRoles.some((each) => each.title === answer.title);
+    if (roleCheck) {
+      console.log(chalk.red("Error! Role already exists! Please try again."));
+      startPrompt();
+      return;
+    }
