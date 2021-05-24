@@ -367,3 +367,11 @@ var employeeResponse = await inquirer.prompt([
         choices: nameEmployee,
         },
     ]);
+
+var roleRow = await connection.query("SELECT * FROM role");
+var employeeRoleChoices = roleRow.map((employeeRole) => {
+    return {
+        name: employeeRole.title,
+        value: employeeRole.id,
+        };
+    });
