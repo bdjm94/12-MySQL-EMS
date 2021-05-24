@@ -177,13 +177,13 @@ var addEmployee = async () => {
         role_id: response.role_id,
         manager_id: response.manager_id,
       });
-      console.table(
+      console.table(chalk.blue(
         "-------------------------------------------------------------------",
         ` Success! This employee has been added to your database: ${
           response.first_name + " " + response.last_name
         }`,
         "-------------------------------------------------------------------",
-      );
+      ));
       startPrompt();
     } catch (err) {
       console.log(err);
