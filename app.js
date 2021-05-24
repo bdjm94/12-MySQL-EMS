@@ -253,3 +253,14 @@ var response = await inquirer.prompt([
       startPrompt();
     }
   };
+
+var addDepartment = async () => {
+  try {
+    var response = await inquirer.prompt([
+      {
+        name: "department",
+        type: "input",
+        message: "What is the new Department's name?",
+        validate: validInput,
+      },
+    ]);  
