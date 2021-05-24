@@ -422,3 +422,11 @@ var result = await connection.query(`UPDATE employees SET ?, ? WHERE ?`, [
   startPrompt();
 }
 };
+
+var exit = async () => {
+    console.table(
+      "=================================================",
+      "    Thanks for the updates. Come back soon!      ",
+      "================================================="),
+    connection.end();
+    };
