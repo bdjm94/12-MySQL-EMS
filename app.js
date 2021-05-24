@@ -111,3 +111,17 @@ connection.connect((err) => {
         }
       };
 
+
+const validInput = (answer) => {
+    if (answer === "") {
+        return "This field cannot be empty!";
+    }
+        return true;
+      };
+
+const validNum = (input) => {
+    if (isNaN(input) === false) {
+        return true;
+    }
+        return "Please enter a number!";
+      };
