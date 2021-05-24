@@ -358,3 +358,12 @@ var updateEmployeeRoles = async () => {
           value: employeeName.id,
         };
       });
+
+var employeeResponse = await inquirer.prompt([
+    {
+        name: "employee_id",
+        type: "list",
+        message: "Choose an Employee that you wish to update",
+        choices: nameEmployee,
+        },
+    ]);
