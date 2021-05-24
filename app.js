@@ -86,15 +86,7 @@ connection.connect((err) => {
       
             case "Update Employee Roles":
                 updateEmployeeRoles();
-                break;
-
-            case "Delete Employee":
-                deleteEmployee();
-                break;
-                
-            case "Delete Role":
-                deleteRole();
-                break;    
+                break;  
       
             case "Exit":
               exit();
