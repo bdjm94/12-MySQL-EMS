@@ -384,3 +384,11 @@ var roleResponse = await inquirer.prompt([
         choices: employeeRoleChoices,
       },
     ]);
+
+var managerInfo = await connection.query("SELECT * FROM employees");
+var employee_manager = managerInfo.map((empManager) => {
+      return {
+        name: empManager.first_name + " " + empManager.last_name,
+        value: empManager.id,
+      };
+    });    
