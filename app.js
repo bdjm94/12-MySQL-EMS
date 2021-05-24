@@ -391,4 +391,11 @@ var employee_manager = managerInfo.map((empManager) => {
         name: empManager.first_name + " " + empManager.last_name,
         value: empManager.id,
       };
-    });    
+    });
+
+if (employee_manager.length === 0) {
+    employee_manager = [{ name: "None", value: null }];
+    }
+
+let noManager = employee_manager;
+    noManager.push({ name: "None", value: null });
