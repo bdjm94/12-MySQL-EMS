@@ -407,4 +407,18 @@ var managerResponse = await inquirer.prompt([
           message: "Choose a new Manager",
           choices: employee_manager,
     },
-]);    
+]);  
+
+var result = await connection.query(`UPDATE employees SET ?, ? WHERE ?`, [
+    { role_id: roleResponse.role_id },
+    { manager_id: managerResponse.manager_id},
+    { id: employeeResponse.employee_id }
+  ]);
+
+  console.log(chalk.green("Success! Role has been updated!"));
+  startPrompt();
+} catch (err) {
+  console.log(err);
+  startPrompt();
+}
+};
