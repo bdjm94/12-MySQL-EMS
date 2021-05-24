@@ -6,7 +6,7 @@ USE employee_tracker_DB;
 CREATE TABLE department (
     id INT AUTO_INCREMENT NOT NULL ,
     department_name VARCHAR(30) NOT NULL,
-    PRIMARY KEY(id),
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE role (
@@ -14,7 +14,7 @@ CREATE TABLE role (
     title VARCHAR(30) NULL,
     salary DECIMAL(10, 2) NULL,
     department_id INT NULL,
-    PRIMARY KEY(id),
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE employees (
@@ -23,7 +23,7 @@ CREATE TABLE employees (
     last_name VARCHAR(30) NULL,
     role_id INT NOT NULL,
     manager_id INT NULL,
-    PRIMARY KEY(id),
+    PRIMARY KEY(id)
 );
 
 SELECT * FROM department;
