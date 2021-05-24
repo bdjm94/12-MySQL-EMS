@@ -351,8 +351,8 @@ var viewDepartments = async () => {
 
 var updateEmployeeRoles = async () => {
     try {
-      var employeeRow = await connection.query("SELECT * FROM employees");
-      var nameEmployee = employeeRow.map((employeeName) => {
+var employeeRow = await connection.query("SELECT * FROM employees");
+var nameEmployee = employeeRow.map((employeeName) => {
         return {
           name: employeeName.first_name + " " + employeeName.last_name,
           value: employeeName.id,
@@ -375,3 +375,12 @@ var employeeRoleChoices = roleRow.map((employeeRole) => {
         value: employeeRole.id,
         };
     });
+
+var roleResponse = await inquirer.prompt([
+      {
+        name: "role_id",
+        type: "list",
+        message: "Choose a new Role",
+        choices: employeeRoleChoices,
+      },
+    ]);
