@@ -125,3 +125,13 @@ const validNum = (input) => {
     }
         return "Please enter a number!";
       };
+
+var addEmployee = async () => {
+  try {
+    var empRow = await connection.query("SELECT * FROM role");
+    var choicesArr = empRow.map((employeeRole) => {
+      return {
+        name: employeeRole.title,
+        value: employeeRole.id,
+      };
+    });
